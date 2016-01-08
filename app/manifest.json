@@ -11,7 +11,8 @@
   "background": {
     "scripts": [
       "scripts/chromereload.js",
-      "scripts/background.js"
+      "scripts/background.js",
+      "scripts/libraries/jquery-2.2.0.min.js"
     ],
     "persistent": false
   },
