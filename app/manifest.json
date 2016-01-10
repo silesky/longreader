@@ -11,13 +11,14 @@
   "background": {
     "scripts": [
       "scripts/chromereload.js",
-      "scripts/background.js",
-      "scripts/libraries/jquery-2.2.0.min.js"
+      "scripts/libraries/jquery-2.2.0.min.js",
+      "scripts/background.js"
     ],
     "persistent": false
 },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "https://readability.com/*"
   ],
   "content_security_policy": "script-src 'self' https://readability.com/; object-src 'self'",
   "browser_action": {

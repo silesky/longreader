@@ -8,7 +8,7 @@ $('document').ready(function(){
     url: myApi,
     async: false,
     contentType: 'application/json',
-    dataType: 'jsonp',
+    dataType: 'json',
     success: function(e) {
       if (e) {
         console.log('jsonp call successful: ' + e.url);
