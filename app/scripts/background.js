@@ -2,10 +2,9 @@
 
 chrome.browserAction.onClicked.addListener(function(tab) {
   // No tabs or host permissions needed!
-  console.log('Turning ' + tab.url + ' red!');
-  chrome.tabs.executeScript({
-    code: 'document.body.style.backgroundColor="red"'
-  });
+  console.log('Turning ' + tab.url + ' yellow!');
+
+  chrome.tabs.executeScript(null, {file: 'scripts/inject.js'});
 
   function getTabUrl() {
     console.log('Tab URL is: ' + tab.url);
@@ -26,8 +25,8 @@ chrome.browserAction.onClicked.addListener(function(tab) {
       dataType: 'jsonp',
       success: function(e) {
         if (e) {
-          console.log(e.url);
-          console.log(e.content);
+          console.log('jsonp call successful: ' + e.url);
+          // console.log(e.content);
         } else {
           console.log('error');
         }
