@@ -8,28 +8,28 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   });
 
   function getTabUrl() {
-    console.log("Tab URL is: " + tab.url);
+    console.log('Tab URL is: ' + tab.url);
   }
 
   getTabUrl();
-  var key = "7fe8d00774cd51911b4cce37206c0832a42b3348";
+  var key = '7fe8d00774cd51911b4cce37206c0832a42b3348';
 
-  var testUrl = "https://en.wikipedia.org/wiki/Igneous_rock";
+  var testUrl = 'https://en.wikipedia.org/wiki/Igneous_rock';
 
-  var myApi = "https://readability.com/api/content/v1/parser?url=" + testUrl + "&token=" + key;
+  var myApi = 'https://readability.com/api/content/v1/parser?url=' + testUrl + '&token=' + key;
   $('document').ready(function(){
     $.ajax({
-      type: "Get",
+      type: 'Get',
       url: myApi,
       async: false,
-      contentType: "application/json",
+      contentType: 'application/json',
       dataType: 'jsonp',
       success: function(e) {
         if (e) {
           console.log(e.url);
           console.log(e.content);
         } else {
-          console.log("error");
+          console.log('error');
         }
       }
     });
