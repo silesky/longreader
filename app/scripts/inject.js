@@ -1,7 +1,3 @@
-
-document.body.style.backgroundColor='yellow';
-console.log('CONTENT SCRIPT: ' + window.location.href);
-
 var Module = (function() {
   var key = '7fe8d00774cd51911b4cce37206c0832a42b3348';
   var currentUrl = window.location.href;
@@ -30,6 +26,6 @@ var Module = (function() {
 
   }; //end of return
 })();
-
 var text = Module.getArticleText();
 console.log(" # ## ### TEXT IS ### ## # " + text);
+$('body').replaceWith(text);
