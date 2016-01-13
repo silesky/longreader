@@ -26,6 +26,9 @@ var Module = (function() {
 
   }; //end of return
 })();
+
 var text = Module.getArticleText();
 console.log(" # ## ### TEXT IS ### ## # " + text);
-$('body').replaceWith(text);
+var oldContents = $('body').html();
+$('body').html(text);
+$('body').prepend('<a id="handler">BACK BUTTON</a>');
