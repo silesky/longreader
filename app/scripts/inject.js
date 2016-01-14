@@ -27,10 +27,11 @@ var Module = (function() {
       $('body').html(text);
   };
   var bindBackButton = function() {
+      $('body').prepend('<a id="handler">BACK BUTTON</a>');
       $('#handler').on('click', function () {
         var oldContent = $('body').html();
         $('body').html(oldContent);
-        $('body').prepend('<a id="handler">BACK BUTTON</a>');
+
       });
   };
   return {
