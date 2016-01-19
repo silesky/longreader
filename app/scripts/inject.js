@@ -3,6 +3,20 @@ var Module = (function() {
   var currentUrl = window.location.href;
   var myApi = 'https://readability.com/api/content/v1/parser?url=' + currentUrl + '&token=' + key;
   var articleText;
+
+  var displayTemplate = function() {
+    var source =
+            '<!doctype html>' +
+            '<html>' +
+            '<body>' +
+            '<nav></nav>' +
+            '<article>'+
+              '<h1>Article Heading</h1>' +
+            '</article>' +
+            '</body>' +
+            '</html>';
+  $('html').html(source);
+ }
   var getArticleText = function() {
         $.ajax({
             type: 'Get',
@@ -24,10 +38,10 @@ var Module = (function() {
     }; //end of getArticleText()
   var displayContent = function() {
       var text = getArticleText();
-      $('body').html(text);
+      $('article').append(text);
   };
   var bindBackButton = function() {
-      $('body').prepend('<a id="handler">BACK BUTTON</a>');
+      $('body').prepend('<a id="handler">BACK BUTTON</a>'); //doesn't work bc of message passing
       $('#handler').on('click', function () {
         var oldContent = $('body').html();
         $('body').html(oldContent);
@@ -36,6 +50,7 @@ var Module = (function() {
   };
   return {
     init: function() {
+      displayTemplate()
       displayContent();
       bindBackButton();
     }
@@ -44,14 +59,6 @@ var Module = (function() {
 })();
 Module.init();
 
-var view = {
-    title: "Joe",
-    calc: function() {
-        return 2 + 4;
-    }
-};
 
-var html = Mustache.to_html("{{title}} spends {{calc}}", view);
-console.log(html);
 
 
