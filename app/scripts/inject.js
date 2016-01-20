@@ -17,7 +17,7 @@ var Module = (function() {
             '</html>';
   $('html').html(source);
  }
-  var getArticleText = function() {
+  var getArticle = function() {
         $.ajax({
             type: 'Get',
             url: myApi,
@@ -27,17 +27,19 @@ var Module = (function() {
             success: function(response) {
                 if (response) {
                     console.log('jsonp call successful: ' + response.url);
-                    articleText = response.content;
+                    article = response;
+
 
                 } else {
                     console.log('error');
                 }
             } //end of success callback
         }); //end of ajax call
-        return articleText;
-    }; //end of getArticleText()
+        return article;
+    }; //end of getArticle()
   var displayContent = function() {
-      var text = getArticleText();
+      var text = getArticle();
+      console.log("author is: " + text.author);
       $('article').append(text);
   };
   var bindBackButton = function() {
@@ -58,7 +60,3 @@ var Module = (function() {
 
 })();
 Module.init();
-
-
-
-
