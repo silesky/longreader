@@ -2,7 +2,7 @@ var Module = (function() {
   var key = '7fe8d00774cd51911b4cce37206c0832a42b3348';
   var currentUrl = window.location.href;
   var myApi = 'https://readability.com/api/content/v1/parser?url=' + currentUrl + '&token=' + key;
-
+  var oldContent = $('html').html();
   var displayTemplate = function() {
     var source =
             '<!doctype html>' +
@@ -48,15 +48,13 @@ var Module = (function() {
   var bindBackButton = function() {
       $('body').prepend('<a id="back-btn">BACK BUTTON</a>'); //doesn't work bc of message passing
       $('#back-btn').on('click', function () {
-        console.log(oldContent);
-        var oldContent = $('body').html();
-        $('body').html(oldContent);
-
+          //remove CSS?
+        $('html').html(oldContent);
       });
   };
   return {
     init: function() {
-      displayTemplate()
+      displayTemplate();
       displayContent();
       bindBackButton();
     }
