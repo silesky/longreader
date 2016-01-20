@@ -10,11 +10,13 @@ var Module = (function() {
             '<html>' +
             '<body>' +
             '<nav></nav>' +
-            '<article>'+
-              '<h1>Article Heading</h1>' +
+            '<article id="content">'+
+              '<h1 id="title"></h1>' +
+              '<h2 id="author">by </h2>' +
             '</article>' +
             '</body>' +
             '</html>';
+
   $('html').html(source);
  }
   var getArticle = function() {
@@ -28,8 +30,6 @@ var Module = (function() {
                 if (response) {
                     console.log('jsonp call successful: ' + response.url);
                     article = response;
-
-
                 } else {
                     console.log('error');
                 }
@@ -38,12 +38,17 @@ var Module = (function() {
         return article;
     }; //end of getArticle()
   var displayContent = function() {
-      var text = getArticle();
-      console.log("author is: " + text.author);
-      $('article').append(text);
+      var articleObj = getArticle();
+      var content = articleObj.content;
+      var author = articleObj.author;
+      var url = articleObj.url;
+      var title = articleObj.title;
+      $('#title').append(title);
+      $('#author').append(author);
+      $('#content').append(content);
   };
   var bindBackButton = function() {
-      $('body').prepend('<a id="handler">BACK BUTTON</a>'); //doesn't work bc of message passing
+      $('body').prepend('<a href="" id="handler">BACK BUTTON</a>'); //doesn't work bc of message passing
       $('#handler').on('click', function () {
         var oldContent = $('body').html();
         $('body').html(oldContent);

@@ -5,7 +5,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.executeScript(null, {file: 'scripts/libraries/handlebars.min.js'});
   chrome.tabs.executeScript(null, {file: 'scripts/libraries/jquery-2.2.0.min.js'});
   chrome.tabs.executeScript(null, {file: 'scripts/inject.js'});
-
+  chrome.tabs.insertCSS(null, {file: 'scripts/inject.css'});
   function getTabUrl() {
       console.log('Tab URL is: ' + tab.url);
   }
