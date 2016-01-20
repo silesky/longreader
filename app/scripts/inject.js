@@ -2,7 +2,6 @@ var Module = (function() {
   var key = '7fe8d00774cd51911b4cce37206c0832a42b3348';
   var currentUrl = window.location.href;
   var myApi = 'https://readability.com/api/content/v1/parser?url=' + currentUrl + '&token=' + key;
-  var articleText;
 
   var displayTemplate = function() {
     var source =
@@ -10,7 +9,7 @@ var Module = (function() {
             '<html>' +
             '<body>' +
             '<nav></nav>' +
-            '<article id="content">'+
+            '<article id="content" class="three-col">'+
               '<h1 id="title"></h1>' +
               '<h2 id="author">by </h2>' +
             '</article>' +
@@ -18,7 +17,7 @@ var Module = (function() {
             '</html>';
 
   $('html').html(source);
- }
+};
   var getArticle = function() {
         $.ajax({
             type: 'Get',
