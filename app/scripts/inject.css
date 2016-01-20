@@ -9,3 +9,7 @@
       -moz-column-width: 400px;
       column-width: 400px;
     }
+
+    #back-btn {
+      cursor: pointer;
+    }
