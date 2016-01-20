@@ -11,13 +11,12 @@ var Module = (function() {
             '<nav></nav>' +
             '<article id="content" class="three-col">'+
               '<h1 id="title"></h1>' +
-              '<h2 id="author">by </h2>' +
+              '<h2 id="author"></h2>' +
             '</article>' +
             '</body>' +
             '</html>';
-
-  $('html').html(source);
-};
+    $('html').html(source);
+  };
   var getArticle = function() {
         $.ajax({
             type: 'Get',
@@ -47,8 +46,9 @@ var Module = (function() {
       $('#content').append(content);
   };
   var bindBackButton = function() {
-      $('body').prepend('<a href="" id="handler">BACK BUTTON</a>'); //doesn't work bc of message passing
-      $('#handler').on('click', function () {
+      $('body').prepend('<a href="" id="back-btn">BACK BUTTON</a>'); //doesn't work bc of message passing
+      $('#back-btn').on('click', function () {
+        console.log(oldContent);
         var oldContent = $('body').html();
         $('body').html(oldContent);
 
