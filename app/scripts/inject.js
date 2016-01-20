@@ -46,7 +46,7 @@ var Module = (function() {
       $('#content').append(content);
   };
   var bindBackButton = function() {
-      $('body').prepend('<a href="" id="back-btn">BACK BUTTON</a>'); //doesn't work bc of message passing
+      $('body').prepend('<a id="back-btn">BACK BUTTON</a>'); //doesn't work bc of message passing
       $('#back-btn').on('click', function () {
         console.log(oldContent);
         var oldContent = $('body').html();

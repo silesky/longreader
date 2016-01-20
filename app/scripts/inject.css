@@ -1,23 +1,11 @@
 
-@media all and (max-width: 1920px) {
-
-  .book {
-    -webkit-column-width: 400px;
-    -moz-column-width: 400px;
-    column-width: 400px;
-  }
-.three-col {
-    -webkit-column-width: 400px;
-    -moz-column-width: 400px;
-    column-width: 400px;
-  }
-
-  body {
+  body, a {
     background-color: black;
     color: white;
   }
 
-  a {
-    color: white;
-  }
-}
+  .three-col {
+      -webkit-column-width: 400px;
+      -moz-column-width: 400px;
+      column-width: 400px;
+    }
