@@ -7,9 +7,9 @@ var Module = (function() {
     var source =
             '<!doctype html>' +
             '<html>' +
-            '<body>' +
+            '<body class="longreader">' +
             '<nav></nav>' +
-            '<article id="content" class="three-col">'+
+            '<article id="content" class="longreader-three-col">'+
               '<h1 id="title"></h1>' +
               '<h2 id="author"></h2>' +
             '</article>' +
@@ -47,10 +47,10 @@ var Module = (function() {
   };
   var bindBackButton = function() {
       $('body').prepend('<a id="back-btn">BACK BUTTON</a>'); //doesn't work bc of message passing
-      $('#back-btn').on('click', function () {
-          //remove CSS?
-        $('html').html(oldContent);
-      });
+        $('#longreader-back-btn').on('click', function () {
+          $('body').removeClass('longreader .three-col');
+          $('html').html(oldContent);
+        });
   };
   return {
     init: function() {

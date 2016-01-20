@@ -1,15 +1,16 @@
 
-  body, a {
-    background-color: black;
-    color: white;
+  .longreader, .longreader a {
+    background-color: black !important;
+    background: black;
+    color: white !important;
   }
 
-  .three-col {
-      -webkit-column-width: 400px;
-      -moz-column-width: 400px;
-      column-width: 400px;
+  .longreader-three-col {
+      -webkit-column-width: 400px !important;
+      -moz-column-width: 400px !important;
+      column-width: 400px !important;
     }
 
-    #back-btn {
-      cursor: pointer;
+    #longreader-back-btn {
+      cursor: pointer !important;
     }
