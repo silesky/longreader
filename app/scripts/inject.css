@@ -14,6 +14,8 @@
     #longreader-back-btn {
       cursor: pointer !important;
       border: 1px solid;
+      text-decoration: none;
+      padding: 2px;
     }
 
     .longreader-hide {
@@ -21,6 +23,7 @@
     }
 
     .longreader-bar {
+      display: inline-block;
       height: 100%;
-      border: 1px solid white;
+      border-right: 3px solid white;
     }
