@@ -13,8 +13,13 @@
 
     #longreader-back-btn {
       cursor: pointer !important;
+      border: 1px solid;
     }
 
     .longreader-hide {
       display: none;
+    }
+
+    .longreader-bar {
+      
     }
