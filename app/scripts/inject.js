@@ -47,11 +47,7 @@ var Module = (function() {
       $('#content').append(content);
   };
   var bindBackButton = function() {
-      $('body').prepend('<a id="longreader-back-btn">BACK</a>'); //doesn't work bc of message passing
-        $('#longreader-back-btn').on('click', function () {
-          $('body').removeClass('longreader longreader-three-col');
-          $('html').html(oldContent);
-        });
+      $('body').prepend('<a href="" id="longreader-back-btn">BACK</a>'); //doesn't work bc of message passing
   };
   return {
     init: function() {
