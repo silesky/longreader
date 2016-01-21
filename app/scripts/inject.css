@@ -14,3 +14,7 @@
     #longreader-back-btn {
       cursor: pointer !important;
     }
+
+    .longreader-hide {
+      display: none;
+    }
