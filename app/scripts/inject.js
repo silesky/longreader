@@ -8,8 +8,10 @@ var Module = (function() {
             '<!doctype html>' +
             '<html>' +
             '<body class="longreader">' +
-            '<a href="" id="longreader-back-btn"></a>' +
-            '<nav></nav>' +
+            '<nav>' +
+            '<button type="submit" id="longreader-back-btn" onClick="history.go(0);"></button>' +
+            '<button type="submit" id="longreader-option-btn">OPTIONS</button>' +
+            '</nav>' +
             '<article id="content" class="longreader-three-col">'+
               '<h1 id="title"></h1>' +
               '<h2 id="author"></h2>' +
