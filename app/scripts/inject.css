@@ -5,9 +5,11 @@
     color: white !important;
   }
 
-  .longreader-three-col {
+  article.longreader-three-col {
+      height: 100vh;
+      overflow-x: auto !important;
       -webkit-column-width: 400px !important;
-      -moz-column-width: 400px !important;
+      -moz-column-width: 400px  !important;
       column-width: 400px !important;
     }
 
