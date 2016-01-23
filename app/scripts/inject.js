@@ -8,14 +8,12 @@ var Module = (function() {
             '<!doctype html>' +
             '<html>' +
             '<body class="longreader">' +
-            '<div class="longreader-bar">'+
             '<a href="" id="longreader-back-btn"></a>' +
             '<nav></nav>' +
             '<article id="content" class="longreader-three-col">'+
               '<h1 id="title"></h1>' +
               '<h2 id="author"></h2>' +
             '</article>' +
-            '</div>' +
             '</body>' +
             '</html>';
     $('html').html(source);
