@@ -1,4 +1,7 @@
 
+  body {
+    overflow-y: hidden; /* no vertical scroll bars! */
+  }
   .longreader, .longreader a {
     background-color: black !important;
     background: black;
@@ -6,11 +9,11 @@
   }
 
   article.longreader-three-col {
-      height: 100vh;
+      height: 95vh; /* 95% of viewport */
       overflow-x: auto !important;
       -webkit-column-width: 400px !important;
       -moz-column-width: 400px  !important;
-      column-width: 400px !important;
+       column-width: 400px !important;
     }
 
     #longreader-back-btn {
