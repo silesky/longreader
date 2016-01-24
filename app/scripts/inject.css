@@ -32,6 +32,10 @@ article.longreader-three-col {
   column-width: 400px !important;
 }
 
+div#longreader-option-window {
+  display: none; /* slides down */
+  padding: 2%;
+}
 
 .longreader-hide {
   display: none;
