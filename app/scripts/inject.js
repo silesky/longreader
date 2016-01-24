@@ -11,12 +11,12 @@ var Module = (function() {
         '<html>' +
           '<body class="longreader">' +
             '<nav>' +
-              '<button type="submit" id="longreader-back-btn" onClick="history.go(0);"></button>' +
+              '<button type="submit" id="longreader-back-btn" onClick="hstory.go(0);"></button>' +
               '<button type="submit" id="longreader-option-btn">OPTION</button>' +
               '<div id="longreader-option-window" class="longreader-option">' +
-                '<button id="longreader-option-color">Color</button>' +
-                '<input type="text" class="color"></input>' +
-                '<button id="longreader-option-size">Font Size</button>' +
+                '<input id="longreader-color-picker" placeholder="Background Color" size="18" class="color"></input>' +
+                '<input id="longreader-option-size" placeholder="Font" size="18"></input>' +
+                '<input id="longreader-option-size" placeholder="Text Size" size="18"></input>'+
               '</div>' +
             '</nav>' +
             '<article id="content" class="longreader-three-col">'+
@@ -62,7 +62,7 @@ var Module = (function() {
         });
       };
       var displayColorPicker = function() {
-        $('#longreader-option-color').on('click', function() {
+        $('#longreader-color-picker').on('focus', function() {
           $('input.color').colorPicker();
         });
       };

@@ -34,17 +34,15 @@ article.longreader-three-col {
 
 div#longreader-option-window {
   display: none; /* slides down */
-  margin: 5px;
-  padding: 0 2px;
+  margin: 5px 0px;
+  padding: 0px 0px
 }
 
-.longreader-option button{
-  display: inline-block;
-}
-
-#longreader-option-color {
+.longreader-option input{
+  display: block;
 
 }
+
 .longreader-hide {
   display: none;
 }
