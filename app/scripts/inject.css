@@ -38,10 +38,13 @@ div#longreader-option-window {
   padding: 0 2px;
 }
 
-.longreader-options button{
+.longreader-option button{
   display: inline-block;
 }
 
+#longreader-option-color {
+
+}
 .longreader-hide {
   display: none;
 }

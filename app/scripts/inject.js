@@ -1,3 +1,4 @@
+/*global $:false */
 var Module = (function() {
 
   var key = '7fe8d00774cd51911b4cce37206c0832a42b3348';
@@ -11,9 +12,10 @@ var Module = (function() {
           '<body class="longreader">' +
             '<nav>' +
               '<button type="submit" id="longreader-back-btn" onClick="history.go(0);"></button>' +
-              '<button type="submit" id="longreader-option-btn">OPTIONS</button>' +
-              '<div id="longreader-option-window" class="longreader-options">' +
+              '<button type="submit" id="longreader-option-btn">OPTION</button>' +
+              '<div id="longreader-option-window" class="longreader-option">' +
                 '<button id="longreader-option-color">Color</button>' +
+                '<input type="text" class="color"></input>' +
                 '<button id="longreader-option-size">Font Size</button>' +
               '</div>' +
             '</nav>' +
@@ -35,7 +37,7 @@ var Module = (function() {
             success: function(response) {
                 if (response) {
                     console.log('jsonp call successful: ' + response.url);
-                    article = response;
+                  article = response;
                 } else {
                     console.log('error');
                 }
@@ -54,10 +56,18 @@ var Module = (function() {
       $('#content').append(content);
   };
   var bindSettings = function() {
-      $('#longreader-option-btn').on('click', function() {
-        $('#longreader-option-window').slideToggle('slow', function() {
+      var displaySettings = function() {
+        $('#longreader-option-btn').on('click', function() {
+          $('#longreader-option-window').slideToggle('slow');
         });
-      });
+      };
+      var displayColorPicker = function() {
+        $('#longreader-option-color').on('click', function() {
+          $('input.color').colorPicker();
+        });
+      };
+      displayColorPicker();
+    displaySettings();
   };
 
   var bindBackButton = function() {
