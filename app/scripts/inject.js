@@ -12,9 +12,9 @@ var Module = (function() {
             '<nav>' +
               '<button type="submit" id="longreader-back-btn" onClick="history.go(0);"></button>' +
               '<button type="submit" id="longreader-option-btn">OPTIONS</button>' +
-                '<div id="longreader-option-window">' +
-                '<div id="longreader-option-color">Color</div>' +
-                '<div id="longreader-option-size">Font Size</div>' +
+              '<div id="longreader-option-window" class="longreader-options">' +
+                '<button id="longreader-option-color">Color</button>' +
+                '<button id="longreader-option-size">Font Size</button>' +
               '</div>' +
             '</nav>' +
             '<article id="content" class="longreader-three-col">'+

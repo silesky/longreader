@@ -34,7 +34,12 @@ article.longreader-three-col {
 
 div#longreader-option-window {
   display: none; /* slides down */
-  padding: 2%;
+  margin: 5px;
+  padding: 0 2px;
+}
+
+.longreader-options button{
+  display: inline-block;
 }
 
 .longreader-hide {
