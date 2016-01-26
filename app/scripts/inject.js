@@ -73,9 +73,11 @@ var Module = (function() {
   };
 
   var bindBackButton = function() {
-      $('#longreader-back-btn').html('BACK'); //doesn't work bc of message passing
+      var backIcon = chrome.extension.getURL('images/back-white.svg');
+      $('#longreader-back-btn').html('<img src=' + backIcon + ' style="height:3em;width:3em" />');
+
       $('#longreader-back-btn').on('click', function() {
-         location.reload(true);
+         location.reload();
 
      });
   };
