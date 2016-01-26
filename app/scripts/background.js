@@ -5,7 +5,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.executeScript(null, {file: 'scripts/libraries/jquery-2.2.0.min.js'});
   chrome.tabs.executeScript(null, {file: 'scripts/inject.js'});
   chrome.tabs.insertCSS(null, {file: 'scripts/inject.css'});
-  chrome.tabs.executeScript(null, {file: 'scripts/libraries/tinyColorPicker/jqColorPicker.min.js'});
+  chrome.tabs.executeScript(null, {file: 'scripts/plugins/tinyColorPicker/jqColorPicker.min.js'});
 
 
 });
