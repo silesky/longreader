@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "chrome extension yeoman",
+    "message": "Longreader",
     "description": "The name of the application"
   },
   "appDescription": {
-    "message": "ws reading capability",
+    "message": "Bookify the web.",
     "description": "The description of the application"
   }
 }
