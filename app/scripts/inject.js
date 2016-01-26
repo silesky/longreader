@@ -11,7 +11,7 @@ var Module = (function() {
         '<html>' +
           '<body class="longreader">' +
             '<nav>' +
-              '<button type="submit" id="longreader-back-btn" onClick="hstory.go(0);"></button>' +
+              '<button type="submit" id="longreader-back-btn"></button>' +
               '<button type="submit" id="longreader-option-btn">OPTION</button>' +
               '<div id="longreader-option-window" class="longreader-option">' +
                 '<input id="longreader-color-picker" placeholder="Background Color" size="18" class="color"></input>' +
@@ -69,11 +69,15 @@ var Module = (function() {
         });
       };
       displayColorPicker();
-    displaySettings();
+      displaySettings();
   };
 
   var bindBackButton = function() {
       $('#longreader-back-btn').html('BACK'); //doesn't work bc of message passing
+      $('#longreader-back-btn').on('click', function() {
+         location.reload(true);
+
+     });
   };
 
   return {
