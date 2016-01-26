@@ -57,6 +57,8 @@ var Module = (function() {
   };
   var bindSettings = function() {
       var displaySettings = function() {
+        var cogIcon = chrome.extension.getURL('images/cog.png');
+        $('#longreader-option-btn').html('<img src=' + cogIcon + ' style="height:3em;width:3em" />');
         $('#longreader-option-btn').on('click', function() {
           $('#longreader-option-window').slideToggle('slow');
         });
