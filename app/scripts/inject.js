@@ -58,15 +58,16 @@ var Module = (function() {
   var bindSettings = function() {
       var displaySettings = function() {
         var cogIcon = chrome.extension.getURL('images/cog.png');
-        $('#longreader-option-btn').html('<img src=' + cogIcon + ' style="height:3em;width:3em" />');
+        $('#longreader-option-btn').html('<img src=' + cogIcon + ' style="height:1.5em;width:1.5em" />');
         $('#longreader-option-btn').on('click', function() {
           $('#longreader-option-window').slideToggle('slow');
         });
       };
       var displayColorPicker = function() {
-        $('#longreader-color-picker').on('focus', function() {
-          $('input.color').colorPicker();
-        });
+        $('#longreader-color-picker').on('focus', function(e) {
+              var myColors = $('input.color').colorPicker();
+              console.log(myColors[0].value);
+          });
       };
       displayColorPicker();
       displaySettings();
@@ -74,7 +75,7 @@ var Module = (function() {
 
   var bindBackButton = function() {
       var backIcon = chrome.extension.getURL('images/back-white.svg');
-      $('#longreader-back-btn').html('<img src=' + backIcon + ' style="height:3em;width:3em" />');
+      $('#longreader-back-btn').html('<img src=' + backIcon + ' style="height:1.5em;width:1.5em" />');
 
       $('#longreader-back-btn').on('click', function() {
          location.reload();
