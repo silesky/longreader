@@ -60,12 +60,22 @@ var Module = (function() {
         var cogIcon = chrome.extension.getURL('images/cog.png');
         $('#longreader-option-btn').html('<img src=' + cogIcon + ' style="height:1.5em;width:1.5em" />');
         $('#longreader-option-btn').on('click', function() {
+
           $('#longreader-option-window').slideToggle('slow');
         });
       };
       var displayColorPicker = function() {
-        $('#longreader-color-picker').on('focus', function(e) {
+        $('#longreader-color-picker').on('focusin', function(e) {
               var myColors = $('input.color').colorPicker();
+          $(document).on('click', function() {
+              var stuff = $('#longreader-color-picker').css('background-color');
+              debugger;
+              console.log('stuff is :' + stuff);
+              console.log(myColors[0].value);
+              });
+            });
+        $('#longreader-color-picker').on('focusout', function(e) {
+            var myColors = $('input.color').colorPicker();
               console.log(myColors[0].value);
           });
       };
