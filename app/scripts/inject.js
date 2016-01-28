@@ -67,17 +67,15 @@ var Module = (function() {
       var displayColorPicker = function() {
         $('#longreader-color-picker').on('focusin', function(e) {
               var myColors = $('input.color').colorPicker();
-          $(document).on('click', function() {
-              var stuff = $('#longreader-color-picker').css('background-color');
-              debugger;
-              console.log('stuff is :' + stuff);
-              console.log(myColors[0].value);
+              $(document).on('click', function() {
+                var currentColor = $('#longreader-color-picker').css('background-color');
+                console.log('stuff is :' +  currentColor);
+                console.log("focusin" + myColors[0].value);
+                console.log("end");
               });
+
             });
-        $('#longreader-color-picker').on('focusout', function(e) {
-            var myColors = $('input.color').colorPicker();
-              console.log(myColors[0].value);
-          });
+
       };
       displayColorPicker();
       displaySettings();
