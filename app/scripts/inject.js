@@ -86,6 +86,7 @@ var LONGREADER = (function() {
 
               var bindClickEvent  = function() {
                       $(document).on('click', function() {
+                        $('body').css('background-color', getCurrentColor());
                         var currentColor = getCurrentColor();
                         console.log('getCurrentColor (onClick): ' + currentColor); /* works */
                   });
