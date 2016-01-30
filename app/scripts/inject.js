@@ -4,7 +4,7 @@ var LONGREADER = (function() {
   var key = '7fe8d00774cd51911b4cce37206c0832a42b3348';
   var currentUrl = window.location.href;
   var myApi = 'https://readability.com/api/content/v1/parser?url=' + currentUrl + '&token=' + key;
-
+  var article;
   var MODEL = (function() {
       var getArticle = function () {
           $.ajax({
@@ -56,7 +56,7 @@ var LONGREADER = (function() {
           var articleObj = MODEL.getArticle();
           var content = articleObj.content;
           var author = articleObj.author;
-          var url = articleObj.url;
+          // var url = articleObj.url;
           var title = articleObj.title;
           $('#title').append(title);
           $('#author').append(author);
@@ -64,13 +64,12 @@ var LONGREADER = (function() {
       };
       var settingsBar = {
           showSettingsBar: function() {
-          var cogIcon = chrome.extension.getURL('images/cog.png');
-          $('#longreader-option-btn').html('<img src=' + cogIcon + ' style="height:1.5em;width:1.5em" />');
-          $('#longreader-option-btn').on('click', function () {
-
-              $('#longreader-option-window').slideToggle('slow');
-          });
-      },
+            var cogIcon = chrome.extension.getURL('images/cog.png');
+            $('#longreader-option-btn').html('<img src=' + cogIcon + ' style="height:1.5em;width:1.5em" />');
+            $('#longreader-option-btn').on('click', function () {
+                $('#longreader-option-window').slideToggle('slow');
+            });
+          },
           showBackButton: function() {
               var backIcon = chrome.extension.getURL('images/back-white.svg');
               $('#longreader-back-btn').html('<img src=' + backIcon + ' style="height:1.5em;width:1.5em" />');
@@ -79,22 +78,29 @@ var LONGREADER = (function() {
               });
           },
           bindColorPicker: function() {
-              $('#longreader-color-picker').on('focusin', function (e) {
-                  var getCurrentColor = function () {
-                      var myColors = $('input.color').colorPicker();
-                      $(document).on('click', function () {
-                          var currentColor = myColors[0].value;
-                          console.log(currentColor);
-                      });
-                  };
+            $('#longreader-color-picker').on('focusin', function () {
+              var myColors = $('input.color').colorPicker(); /* grab color pallet */
+              var getCurrentColor = function() {
+                return myColors[0].value;
+              };
 
-                  $(this).keypress(function (e) {
-                      console.log("keypress: " + getCurrentColor());
+              var bindClickEvent  = function() {
+                      $(document).on('click', function() {
+                        var currentColor = getCurrentColor();
+                        console.log('getCurrentColor (onClick): ' + currentColor); /* works */
                   });
-                  getCurrentColor();
+              };
+              var bindKeyPressEvent = function() {
+                  $(this).keypress(function() {
+                    console.log('keypress: ' + getCurrentColor());
+                  });
+              };
+              bindKeyPressEvent();
+              bindClickEvent();
+
               });
-          }
-      };
+          } //end of bindColorPicker function
+      }; //end of bindColorPicker object literal
       return {
           displayTemplate: displayTemplate,
           displayContent: displayContent,
@@ -111,7 +117,7 @@ var LONGREADER = (function() {
   return {
     init: function() {
       MODEL.getArticle();
-      VIEW.displayTemplate()
+      VIEW.displayTemplate();
       VIEW.displayContent();
       VIEW.displaySettingsBar();
     }
