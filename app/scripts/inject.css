@@ -19,9 +19,7 @@ nav {
 }
 
 .longreader, .longreader a, .longreader button {
-  background-color: black !important;
-  background: black;
-  color: white !important;
+
 }
 
 article.longreader-three-col {
@@ -32,7 +30,7 @@ article.longreader-three-col {
   column-width: 400px !important;
 }
 
-div#longreader-option-window {
+#longreader-option-window {
   display: none; /* slides down */
   margin: 5px 0px;
   padding: 0px 0px
