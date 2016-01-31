@@ -39,7 +39,7 @@ var LONGREADER = (function() {
               '<button type="submit" id="longreader-back-btn"></button>' +
               '<button type="submit" id="longreader-option-btn">OPTION</button>' +
               '<div id="longreader-option-window" class="longreader-option">' +
-              '<input id="longreader-color-picker" placeholder="Background Color" size="18" class="color"></input>' +
+              '<input id="longreader-bg-colorpicker" placeholder="Background Color" size="18" class="color"></input>' +
               '<input id="longreader-option-size" placeholder="Font" size="18"></input>' +
               '<input id="longreader-option-size" placeholder="Text Size" size="18"></input>' +
               '</div>' +
@@ -78,7 +78,7 @@ var LONGREADER = (function() {
               });
           },
           bindColorPicker: function() {
-            $('#longreader-color-picker').on('focusin', function () {
+            $('#longreader-bg-colorpicker').on('focusin', function () {
               var myColors = $('input.color').colorPicker(); /* grab color pallet */
               var getCurrentColor = function() {
                 return myColors[0].value;
