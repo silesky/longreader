@@ -1,4 +1,4 @@
-node_modules
+# node_modules
 temp
 .tmp
 dist
@@ -8,3 +8,4 @@ test/bower_components
 package
 .idea
 .tern*
+  
