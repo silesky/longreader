@@ -82,29 +82,24 @@ var LONGREADER = (function() {
 
             /* callback */
 
-            var createColorPalletAndGetColor = function() {
-               var myColors = $('input.color').colorPicker(); //this needs to grab the currentCOlor of the id
-               console.log("createColorPalletAndGetColor(): " + myColors[0].value);
-               return myColors[0].value;
-             };
 
-             var createColorPalletAndGetFontColor = function() {
-               var fontColors = $('input#longreader-colorpicker-fontcolor').colorPicker();
-               console.log("createColorPalletAndGetFontColor(): " + fontColors[0].value);
-               return fontColors[0].value;
+             var openColorWidgetGetColor = function(selector) {
+               // var fontColors = $('input#longreader-colorpicker-fontcolor').colorPicker();
+               var colors = $(selector).colorPicker();
+               console.log("success: " + colors[0].value);
+               return colors[0].value;
              }
              /* when you click the form input, the pallet opens */
             var bindPallet = function() {
-              $('#longreader-colorpicker-bg').on('focusin', createColorPalletAndGetColor());
-              $('#longreader-colorpicker-fontcolor').on('focusin', createColorPalletAndGetFontColor());
+              $('#longreader-colorpicker-bg').on('focusin', openColorWidgetGetColor('input#longreader-colorpicker-bg'));
+              $('#longreader-colorpicker-fontcolor').on('focusin', openColorWidgetGetColor('input#longreader-colorpicker-fontcolor'));
             }; //end of bindPallet
 
 
             /* when you click the pallet widget, grab the color and change the background*/
-              var bindClickEvent  = function() {
+              var bindClickEvent  = function(currentFontColor, currentColor) {
                 $(document).on('click', function() {
-                  var currentColor = createColorPalletAndGetColor();
-                  var currentFontColor = createColorPalletAndGetFontColor();
+                  var currentFontColor = openColorWidgetGetColor('input#longreader-colorpicker-fontcolor');
                   $('body').css('background-color', currentColor);
                   $('body').css('color', currentFontColor);
                   });
