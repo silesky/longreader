@@ -79,30 +79,42 @@ var LONGREADER = (function() {
               });
           },
           bindColorPicker: function() {
-            $('#longreader-colorpicker-bg').on('focusin', function () {
-              var myColors = $('input.color').colorPicker(); /* grab color pallet */
-              var getCurrentColor = function() {
-                return myColors[0].value;
-              };
+            /* when you click the form input, the pallet opens */
 
+        
+            var createColorPalletAndGetColor = function() {
+               var myColors = $('input.color').colorPicker();
+               return myColors[0].value;
+             };
+
+            var bindPallet = function() {
+              $('#longreader-colorpicker-bg').on('focusin', createColorPalletAndGetColor());
+            }; //end of bindPallet
+
+
+            /* when you click the pallet widget, grab the color */
               var bindClickEvent  = function() {
-                      $(document).on('click', function() {
-                        $('body').css('background-color', getCurrentColor());
-                        var currentColor = getCurrentColor();
-                        console.log('getCurrentColor (onClick): ' + currentColor); /* works */
+                $(document).on('click', function() {
+                  var currentColor = createColorPalletAndGetColor();
+                  $('body').css('background-color', currentColor);
+
                   });
-              };
+              }; //end of bindClickEvent
+
+              /* when you enter in data from the from, grab the color */
               var bindKeyPressEvent = function() {
                   $(this).keypress(function() {
                     console.log('keypress: ' + getCurrentColor());
                   });
               };
+
+              bindPallet();
               bindKeyPressEvent();
               bindClickEvent();
 
-              });
-          } //end of bindColorPicker function
-      }; //end of bindColorPicker object literal
+              }
+          }; //end of bindColorPicker function
+       //end of bindColorPicker object literal
       return {
           displayTemplate: displayTemplate,
           displayContent: displayContent,
