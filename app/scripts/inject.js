@@ -81,15 +81,22 @@ var LONGREADER = (function() {
           bindColorPicker: function() {
 
             /* callback */
+
             var createColorPalletAndGetColor = function() {
-               var myColors = $('input.color').colorPicker();
+               var myColors = $('input.color').colorPicker(); //this needs to grab the currentCOlor of the id
+               console.log("createColorPalletAndGetColor(): " + myColors[0].value);
                return myColors[0].value;
              };
 
+             var createColorPalletAndGetFontColor = function() {
+               var fontColors = $('input#longreader-colorpicker-fontcolor').colorPicker();
+               console.log("createColorPalletAndGetFontColor(): " + fontColors[0].value);
+               return fontColors[0].value;
+             }
              /* when you click the form input, the pallet opens */
             var bindPallet = function() {
               $('#longreader-colorpicker-bg').on('focusin', createColorPalletAndGetColor());
-              $('#longreader-colorpicker-fontcolor').on('focusin', createColorPalletAndGetColor());
+              $('#longreader-colorpicker-fontcolor').on('focusin', createColorPalletAndGetFontColor());
             }; //end of bindPallet
 
 
@@ -97,7 +104,9 @@ var LONGREADER = (function() {
               var bindClickEvent  = function() {
                 $(document).on('click', function() {
                   var currentColor = createColorPalletAndGetColor();
+                  var currentFontColor = createColorPalletAndGetFontColor();
                   $('body').css('background-color', currentColor);
+                  $('body').css('color', currentFontColor);
                   });
               }; //end of bindClickEvent
 
