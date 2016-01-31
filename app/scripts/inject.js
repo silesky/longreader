@@ -79,25 +79,25 @@ var LONGREADER = (function() {
               });
           },
           bindColorPicker: function() {
-            /* when you click the form input, the pallet opens */
 
-        
+            /* callback */
             var createColorPalletAndGetColor = function() {
                var myColors = $('input.color').colorPicker();
                return myColors[0].value;
              };
 
+             /* when you click the form input, the pallet opens */
             var bindPallet = function() {
               $('#longreader-colorpicker-bg').on('focusin', createColorPalletAndGetColor());
+              $('#longreader-colorpicker-fontcolor').on('focusin', createColorPalletAndGetColor());
             }; //end of bindPallet
 
 
-            /* when you click the pallet widget, grab the color */
+            /* when you click the pallet widget, grab the color and change the background*/
               var bindClickEvent  = function() {
                 $(document).on('click', function() {
                   var currentColor = createColorPalletAndGetColor();
                   $('body').css('background-color', currentColor);
-
                   });
               }; //end of bindClickEvent
 
@@ -109,8 +109,8 @@ var LONGREADER = (function() {
               };
 
               bindPallet();
-              bindKeyPressEvent();
               bindClickEvent();
+              bindKeyPressEvent();
 
               }
           }; //end of bindColorPicker function
