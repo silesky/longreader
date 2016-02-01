@@ -52,16 +52,25 @@
       });
     };
 
-    var displayContent = function() {
-      var articleObj = MODEL.getArticle();
+    var displayContent = (function() {
+      var articleObj = function() {
+        return MODEL.getArticle();
+      };
       var content = articleObj.content;
+      var title = articleObj.title;
       var author = articleObj.author;
       // var url = articleObj.url;
-      var title = articleObj.title;
-      $('#title').append(title);
-      $('#author').append(author);
-      $('#content').append(content);
-    };
+      //$('#title').append(title);
+       // $('#author').append(author);
+      // $('#content').append(content);
+      return {
+        init: articleObj,
+        content: content,
+        title: title,
+        author: author
+      }
+    })();
+
     var settingsBar = {
       slideUpDown: function() {
         console.log('slide up down');
@@ -109,11 +118,11 @@
 
     var longreaderVm = {
       init: function() {
-        return $.when(displayTemplate())
-          .done(function () {
-            displayContent();
-          });
+        return $.when(displayTemplate()).done(function() {
+          displayContent.init();
+        });
       },
+
       cogIconUri: chrome.extension.getURL('images/cog.png'),
       backIconUri: chrome.extension.getURL('images/back-white.svg'),
       settingsBar: settingsBar,
