@@ -51,19 +51,19 @@
     $('#content').append(content);
   };
   var settingsBar = {
-    showSettingsBar: function() {
+    init: function () {
       var cogIcon = chrome.extension.getURL('images/cog.png');
       $('#longreader-option-btn').html('<img src=' + cogIcon + ' style="height:1.5em;width:1.5em" />');
-      $('#longreader-option-btn').on('click', function () {
-        $('#longreader-option-window').slideToggle('slow');
-      });
-    },
-    showBackButton: function() {
+
       var backIcon = chrome.extension.getURL('images/back-white.svg');
       $('#longreader-back-btn').html('<img src=' + backIcon + ' style="height:1.5em;width:1.5em" />');
-      $('#longreader-back-btn').on('click', function () {
+    },
+    slideUpDown: function() {
+      console.log('slide up down');
+      $('#longreader-option-window').slideToggle('slow');
+    },
+    reloadPage2: function() {
         location.reload();
-      });
     },
     bindColorPicker: function() {
 
@@ -109,15 +109,19 @@
 
   var longreaderVm = {
     init: function() {
+      console.log('initializing view model');
       displayTemplate().done(function () {
         displayContent();
-        settingsBar.showSettingsBar();
+
+        settingsBar.init();
+        ko.applyBindings(longreaderVm);
       });
 
       return longreaderVm;
     },
+    settingsBar: settingsBar,
   };
 
-  ko.applyBindings(longreaderVm.init());
+  longreaderVm.init();
 
 })();

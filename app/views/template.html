@@ -2,8 +2,8 @@
 <html>
 <body class="longreader">
   <nav>
-    <button type="submit" id="longreader-back-btn"></button>
-    <button type="submit" id="longreader-option-btn">OPTION</button>
+    <button type="submit" id="longreader-back-btn" data-bind="click: settingsBar.reloadPage"></button>
+    <button type="submit" id="longreader-option-btn" data-bind="click: settingsBar.slideUpDown">OPTION</button>
     <div id="longreader-option-window" class="longreader-option">
       <input id="longreader-colorpicker-bg" placeholder="Background Color" size="18" class="color">
       <input id="longreader-colorpicker-fontcolor" placeholder="Font Color" size="18" class="color">
