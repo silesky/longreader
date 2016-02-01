@@ -62,7 +62,7 @@
       console.log('slide up down');
       $('#longreader-option-window').slideToggle('slow');
     },
-    reloadPage2: function() {
+    reloadPage: function() {
         location.reload();
     },
     bindColorPicker: function() {
@@ -110,18 +110,20 @@
   var longreaderVm = {
     init: function() {
       console.log('initializing view model');
-      displayTemplate().done(function () {
-        displayContent();
+      return $.when(displayTemplate())
+        .done(function () {
+          displayContent();
+          settingsBar.init();
+        });
 
-        settingsBar.init();
-        ko.applyBindings(longreaderVm);
-      });
-
-      return longreaderVm;
     },
     settingsBar: settingsBar,
   };
 
-  longreaderVm.init();
+  longreaderVm
+    .init()
+    .done(function () {
+      ko.applyBindings(longreaderVm);
+    });
 
 })();
