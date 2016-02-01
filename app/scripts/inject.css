@@ -22,7 +22,7 @@ nav {
 
 }
 
-article.longreader-three-col {
+.longreader-three-col {
   height: 95vh; /* 95% of viewport */
   overflow-x: auto !important;
   -webkit-column-width: 400px !important;
