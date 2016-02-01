@@ -49,25 +49,28 @@
       })
       .done(function (data) {
         $('html').html(data);
+        console.log(data);
       });
     };
 
     var displayContent = (function() {
-      var articleObj = function() {
-        return MODEL.getArticle();
-      };
-      var content = articleObj.content;
-      var title = articleObj.title;
-      var author = articleObj.author;
+      var articleObj = MODEL.getArticle();
+      var articleContent = articleObj.content;
+      var articleTitle = articleObj.title;
+      var articleAuthor = articleObj.author;
+      var speak = function() {
+        console.log("THE TITLE:" + articleObj.title);
+      }
       // var url = articleObj.url;
       //$('#title').append(title);
        // $('#author').append(author);
       // $('#content').append(content);
       return {
-        init: articleObj,
-        content: content,
-        title: title,
-        author: author
+
+        articleContent: articleContent,
+        articleTitle: articleTitle,
+        articleAuthor: articleAuthor,
+        speak: speak
       }
     })();
 
@@ -119,7 +122,7 @@
     var longreaderVm = {
       init: function() {
         return $.when(displayTemplate()).done(function() {
-          displayContent.init();
+          console.log("displayTemplate() finished!");
         });
       },
 
@@ -128,11 +131,16 @@
       settingsBar: settingsBar,
       bgColor: bgColor,
       fontColor: fontColor,
+      articleContent: displayContent.articleContent,
+      articleTitle: displayContent.articleTitle,
+      articleAuthor: displayContent.articleAuthor
     };
 
     longreaderVm
       .init()
       .done(function () {
+        console.log("init done");
+        displayContent.speak();
         ko.applyBindings(longreaderVm);
       });
 

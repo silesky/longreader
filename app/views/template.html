@@ -27,11 +27,15 @@
       <input id="longreader-option-size" placeholder="Text Size" size="18">
     </div>
   </nav>
-  <article id="content" class="longreader-three-col">
-    <h1 data-bind="text: articleTitle"
+  <article>
+    <h1 data-bind="text: articleTitle">
     id="title"></h1>
+
     <h2 data-bind="text: articleAuthor">
     </h2>
+    <div data-bind="html: articleContent">
+      CONTENT
+    </div>
   </article>
 </body>
 </html>
