@@ -1,35 +1,28 @@
 <!doctype html>
 <html>
-<body class="longreader" data-bind="style: {'backgroundColor': bgColor}">
+<body class="longreader">
   <nav>
     <button data-bind="click: settingsBar.reloadPage">
-      <img style="height:1.5em;width:1.5em" data-bind="attr: {src: backIconUri}"/>
+      <img style="height:1.5em;width:1.5em"
+      data-bind="attr: {src: backIconUri}"/>
     </button>
     <button data-bind="click: settingsBar.slideUpDown">
-      <img style="height:1.5em;width:1.5em" data-bind="attr: {src: cogIconUri}"/>
+      <img style="height:1.5em;width:1.5em"
+       data-bind="attr: {src: cogIconUri}"/>
     </button>
+
+
     <div id="longreader-option-window" class="longreader-option">
-      <input id="longreader-colorpicker-bg"
-      placeholder="Background Color"
-      size="18"
-      class="color"
-      data-bind="colorPicker: {}, value: bgColor"
-      >
-      <input
-      id="longreader-colorpicker-fontcolor"
-      placeholder="Font Color"
-      size="18"
-      class="color"
-      data-bind="colorPicker: {}"
-      >
+      <input data-bind="click: bgColorWidget"  id="bgColorWidget" placeholder="Background Color" size="18" class="color">
+      <input id="longreader-colorpicker-fontcolor" placeholder="Font Color" size="18" class="color">
       <input id="longreader-fontsize" placeholder="Font" size="18">
       <input id="longreader-option-size" placeholder="Text Size" size="18">
     </div>
   </nav>
   <article class="longreader-three-col">
-      <h1 data-bind="text: articleTitle"></h1>
-      <h2 data-bind="text: articleAuthor"></h2>
-        <div data-bind="html: articleContent"></div>
+    <h1 data-bind="text: articleTitle"></h1>
+    <h2 data-bind="text: articleAuthor"></h2>
+    <div data-bind="html: articleContent"></div>
   </article>
-  </body>
-  </html>
+</body>
+</html>
