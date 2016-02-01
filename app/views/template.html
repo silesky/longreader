@@ -1,12 +1,28 @@
 <!doctype html>
 <html>
-<body class="longreader">
+<body class="longreader" data-bind="style: {'backgroundColor': bgColor}">
   <nav>
-    <button type="submit" id="longreader-back-btn" data-bind="click: settingsBar.reloadPage"></button>
-    <button type="submit" id="longreader-option-btn" data-bind="click: settingsBar.slideUpDown">OPTION</button>
+    <button data-bind="click: settingsBar.reloadPage">
+      <img style="height:1.5em;width:1.5em" data-bind="attr: {src: backIconUri}"/>
+    </button>
+    <button data-bind="click: settingsBar.slideUpDown">
+      <img style="height:1.5em;width:1.5em" data-bind="attr: {src: cogIconUri}"/>
+    </button>
     <div id="longreader-option-window" class="longreader-option">
-      <input id="longreader-colorpicker-bg" placeholder="Background Color" size="18" class="color">
-      <input id="longreader-colorpicker-fontcolor" placeholder="Font Color" size="18" class="color">
+      <input
+        id="longreader-colorpicker-bg"
+        placeholder="Background Color"
+        size="18"
+        class="color"
+        data-bind="colorPicker: {}, value: bgColor"
+      >
+      <input
+        id="longreader-colorpicker-fontcolor"
+        placeholder="Font Color"
+        size="18"
+        class="color"
+        data-bind="colorPicker: {}"
+      >
       <input id="longreader-fontsize" placeholder="Font" size="18">
       <input id="longreader-option-size" placeholder="Text Size" size="18">
     </div>
