@@ -66,26 +66,38 @@
           location.reload();
       },
       bgColorWidget: function(data, event) {
-            console.log("bgColorWidget function click");
-            var currentId = event.target.id;
-            var jqCurrentId = '#' + currentId;
-            $(jqCurrentId).colorPicker();
-            $('body').on('click', function() {
-              var color = $(jqCurrentId).css('background-color');
-              $('body').css('background-color', color);
-            });
-        },
-        bindKeyPressEvent: function() {
-          $(this).keypress(function() {
-          });
-        }
+        console.log("bgColorWidget function click");
+        var currentId = event.target.id;
+        var jqCurrentId = '#' + currentId;
+        $(jqCurrentId).colorPicker();
+        $('body').on('click', function() {
+
+          var color = $(jqCurrentId).css('background-color');
+          $('body').css('background-color', color);
+        });
+      },
+
+      fontColorWidget: function(data, event) {
+        var currentId = event.target.id;
+        var jqCurrentId = '#' + currentId;
+        $(jqCurrentId).colorPicker();
+        $('body').on('click', function() {
+          var color = $(jqCurrentId).css('background-color');
+          $('body').css('color', color);
+        });
+      },
+
+      bindKeyPressEvent: function() {
+        $(this).keypress(function() {
+        });
+      }
+
     };
 
     var longreaderVm = {
       init:
       function() {
         return $.when(displayTemplate()).done(function() {
-          console.log("displayTemplate() finished!");
         });
       },
 
@@ -93,6 +105,7 @@
       backIconUri: chrome.extension.getURL('images/back-white.svg'),
       settingsBar: settingsBar,
       bgColorWidget: settingsBar.bgColorWidget,
+      fontColorWidget: settingsBar.fontColorWidget,
       articleContent: displayContent.articleContent,
       articleTitle: displayContent.articleTitle,
       articleAuthor: displayContent.articleAuthor
