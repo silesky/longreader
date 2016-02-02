@@ -2,19 +2,6 @@
   (function() {
     'use strict';
 
-  // ko.bindingHandlers.colorPicker = {
-  //   init: function (element, valueAccessor) {
-  //     $('input.color').colorPicker();
-  //   },
-  //   update: function(element, valueAccessor) {
-  //     var value = valueAccessor();
-  //     console.log(value);
-  //
-  //     var myColors = $(element).colorPicker();
-  //     console.log(myColors[0].value);
-  //   }
-  // };
-
     // Observables
     var bgColorWidget = ko.observable();
     var fontColor = ko.observable();
@@ -54,7 +41,6 @@
       })
       .done(function (data) {
         $('html').html(data);
-        console.log(data);
       });
     };
 
@@ -80,31 +66,15 @@
           location.reload();
       },
       bgColorWidget: function(data, event) {
-            var currentID = event.target.id;
-            console.log(data);
-            console.log(event.target.id);
-            var currentID = event.target.id;
-            $('#' + currentID).colorPicker();
-
+            console.log("bgColorWidget function click");
+            var currentId = event.target.id;
+            var jqCurrentId = '#' + currentId;
+            $(jqCurrentId).colorPicker();
+            $('body').on('click', function() {
+              var color = $(jqCurrentId).css('background-color');
+              $('body').css('background-color', color);
+            });
         },
-
-        /* when you click the form input, the pallet opens */
-        // bindPallet: function() {
-        //   $('#longreader-colorpicker-bg').on('focusin', openColorWidgetGetColor('input#longreader-colorpicker-bg'));
-        //   $('#longreader-colorpicker-fontcolor').on('focusin', openColorWidgetGetColor('input#longreader-colorpicker-fontcolor'));
-        // }, //end of bindPallet
-
-        /* when you click the pallet widget, grab the color and change the background*/
-        // bindClickEvent: function() {
-        //   $('.cp-xy-cursor').on('change', function() {
-        //     var currentFontColor = openColorWidgetGetColor('input#longreader-colorpicker-fontcolor');
-        //     var currentBgColor = openColorWidgetGetColor('input#longreader-colorpicker-bg');
-        //     $('body').css('background-color', currentBgColor);
-        //     $('body').css('color', currentFontColor);
-        //   });
-        // }, //end of bindClickEvent
-
-        /* when you enter in data from the from, grab the color */
         bindKeyPressEvent: function() {
           $(this).keypress(function() {
           });
