@@ -80,11 +80,6 @@
         });
       },
 
-      bindKeyPressEvent: function() {
-        $(this).keypress(function() {
-        });
-      },
-
       fontSelector: function() {
         console.log('select those fonts!');
       }
