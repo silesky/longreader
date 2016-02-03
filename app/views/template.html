@@ -15,12 +15,7 @@
     <div id="longreader-option-window" class="longreader-option">
       <input data-bind="click: settingsBar.bgColorWidget"  id="longreader-colorpicker-bgcolor" placeholder="Background Color" size="13" class="color">
       <input data-bind="click: settingsBar.fontColorWidget" id="longreader-colorpicker-fontcolor" placeholder="Font Color" size="13" class="color">
-      <select data-bind="click: settingsBar.fontSelector" id="longreader-fontselector">
-        <option value="Garamond">Garamond (Serif) </option>
-        <option value="Times New Roman">Times New Roman (Serif)</option>
-        <option value="Arial">Arial (Sans-serif)</option>
-        <option value="Helvetica">Helvetica Neau</option>
-      </select>
+      <select data-bind="options: fontList" id="longreader-fontselector"></select>
       <input id="longreader-option-size" placeholder="Text Size" size="18">
     </div>
   </nav>

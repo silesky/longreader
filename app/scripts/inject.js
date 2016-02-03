@@ -3,8 +3,8 @@
     'use strict';
 
     // Observables
-    var bgColorWidget = ko.observable();
-    var fontColor = ko.observable();
+    var fontList = ko.observableArray(['Arial', 'Times New Roman', 'Courier New']);
+
     var key = '7fe8d00774cd51911b4cce37206c0832a42b3348';
     var currentUrl = window.location.href;
     var myApi = 'https://readability.com/api/content/v1/parser?url=' + currentUrl + '&token=' + key;
@@ -51,6 +51,7 @@
 
     var settingsBar = {
 
+
       slideUpDown: function() {
         console.log('slide up down');
         $('#longreader-option-window').slideToggle('slow');
@@ -80,8 +81,12 @@
         });
       },
 
-      fontSelector: function() {
-        console.log('select those fonts!');
+      fontSelector: function(font) {
+        /* css fonts */
+        var fontObj = {
+          'ariel' : 'Ariel, Helvetica, sans-serif'
+        };
+          var currentFont = fontObj[font];
       }
     };
 
@@ -92,6 +97,7 @@
         });
       },
 
+      fontList: fontList,
       cogIconUri: chrome.extension.getURL('images/cog.png'),
       backIconUri: chrome.extension.getURL('images/back-white.svg'),
       settingsBar: settingsBar,
