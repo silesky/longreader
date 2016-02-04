@@ -27,7 +27,9 @@
     </div>
   </nav>
   <article class="longreader-three-col"
-  data-bind="style: {fontFamily: selectedFont().styleString, fontSize: selectedSize().styleString}"
+  data-bind="style: {fontFamily: selectedFont().styleString,
+    fontSize: selectedSize().styleString},
+    click: settingsBar.slideUp"
   >
     <h1 data-bind="text: displayContent.articleTitle"></h1>
     <h2 data-bind="text: displayContent.articleAuthor"></h2>

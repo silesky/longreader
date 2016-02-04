@@ -99,6 +99,9 @@
         console.log('slide up down');
         $('#longreader-option-window').slideToggle('slow');
       },
+      slideUp: function() {
+        $('#longreader-option-window').slideUp('slow');
+      },
       reloadPage: function() {
           location.reload();
       },
