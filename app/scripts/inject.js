@@ -17,7 +17,7 @@
         styleString: 'Courier',
       }
     ]);
-    var selectedFont = ko.observable();
+    var selectedFont = ko.observable('medium');
     var sizeList = ko.observableArray([
       {
         displayName: 'Tiny',
