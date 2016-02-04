@@ -17,8 +17,27 @@
         styleString: 'Courier',
       }
     ]);
-
     var selectedFont = ko.observable();
+    var sizeList = ko.observableArray([
+      {
+        displayName: 'Tiny',
+        styleString: 'x-small',
+      },
+      {
+        displayName: 'Small',
+        styleString: 'small',
+      },
+      {
+        displayName: 'Medium',
+        styleString: 'medium',
+      },
+      {
+        displayName: 'Large',
+        styleString: 'large',
+      }
+    ]);
+    var selectedSize = ko.observable();
+
 
     var key = '7fe8d00774cd51911b4cce37206c0832a42b3348';
     var currentUrl = window.location.href;
@@ -111,8 +130,11 @@
         return $.when(displayTemplate()).done(function() {
         });
       },
-      selectedFont: selectedFont,
+
+      sizeList: sizeList,
+      selectedSize: selectedSize,
       fontList: fontList,
+      selectedFont: selectedFont,
       cogIconUri: chrome.extension.getURL('images/cog.png'),
       backIconUri: chrome.extension.getURL('images/back-white.svg'),
       settingsBar: settingsBar,

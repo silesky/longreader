@@ -16,7 +16,7 @@
       <input data-bind="click: settingsBar.bgColorWidget"  id="longreader-colorpicker-bgcolor" placeholder="Background Color" size="13" class="color">
       <input data-bind="click: settingsBar.fontColorWidget" id="longreader-colorpicker-fontcolor" placeholder="Font Color" size="13" class="color">
       <select data-bind="options: fontList, optionsText: 'displayName', value: selectedFont" id="longreader-fontselector"></select>
-      <input id="longreader-option-size" placeholder="Text Size" size="18">
+      <select data-bind="options: sizeList, optionsText: 'displayName', value: selectedSize" id="longreader-option-size"></select>
     </div>
   </nav>
   <article class="longreader-three-col" data-bind="style: {fontFamily: selectedFont().styleString}">
