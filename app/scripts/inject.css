@@ -6,9 +6,8 @@ body {
 button { /* options, back */
   font-size: x-small;
   cursor: pointer !important;
-  border: 1px solid;
-  text-decoration: none;
-  padding: 1px 3px; /* t/b r/l */
+  border: none;
+  border-radius: 25px;
   margin:  0 3px;
 }
 
@@ -16,6 +15,12 @@ nav {
   padding-bottom: 3px;
   margin-bottom: 3px;
   border-bottom: 1px solid grey;
+  opacity: 0.5;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+nav:hover {
+  opacity: 1;
 }
 
 .longreader, .longreader a, .longreader button {
