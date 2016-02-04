@@ -3,7 +3,22 @@
     'use strict';
 
     // Observables
-    var fontList = ko.observableArray(['Arial', 'Times New Roman', 'Courier New']);
+    var fontList = ko.observableArray([
+      {
+        displayName: 'Arial',
+        styleString: 'Arial, Helvetica, sans-serif',
+      },
+      {
+        displayName: 'Times New Roman',
+        styleString: 'Times New Roman',
+      },
+      {
+        displayName: 'Courier New',
+        styleString: 'Courier',
+      }
+    ]);
+
+    var selectedFont = ko.observable();
 
     var key = '7fe8d00774cd51911b4cce37206c0832a42b3348';
     var currentUrl = window.location.href;
@@ -96,7 +111,7 @@
         return $.when(displayTemplate()).done(function() {
         });
       },
-
+      selectedFont: selectedFont,
       fontList: fontList,
       cogIconUri: chrome.extension.getURL('images/cog.png'),
       backIconUri: chrome.extension.getURL('images/back-white.svg'),
