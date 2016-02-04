@@ -5,6 +5,10 @@
     // Observables
     var fontList = ko.observableArray([
       {
+        displayName: 'Select a font...',
+        styleString: null
+      },
+      {
         displayName: 'Arial',
         styleString: 'Arial, Helvetica, sans-serif',
       },
@@ -20,9 +24,14 @@
     var selectedFont = ko.observable('medium');
     var sizeList = ko.observableArray([
       {
+        displayName: 'Select a size...',
+        styleString: null
+      },
+      {
         displayName: 'Tiny',
         styleString: 'x-small',
       },
+
       {
         displayName: 'Small',
         styleString: 'small',
