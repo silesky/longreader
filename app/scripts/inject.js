@@ -128,25 +128,33 @@
     }
   };
   var storage = {
+
     get: function() {
-      chrome.storage.local.get('testMsg', function(result) {
-        var testMsg;
-        testMsg = result.testMsg;
-        console.log(testMsg);
+      chrome.storage.local.get(function(result) {
+        console.log('storage.get...');
+        console.log(result);
       });
     },
     apply: function() {
-
     },
-    set: function() {
-      chrome.storage.local.set({'testMsg': 'Testing... 123'});
+    set: function(obj) {
+      console.log('storage.set...')
+      chrome.storage.local.set(obj);
     },
     clear: function() {
       chrome.storage.local.clear();
     },
     test: function() {
+      var object = {
+        firstKey: '{ testing 123 }'
+      };
+      var object2 = {
+        secondKey: '{ testing 456 }'
+      };
       storage.clear();
-      storage.set();
+      storage.set(object);
+      storage.get();
+      storage.set(object2);
       storage.get();
     }
   };
