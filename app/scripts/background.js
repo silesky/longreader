@@ -6,7 +6,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.executeScript(null, {file: 'scripts/plugins/tinyColorPicker/jqColorPicker.min.js'});
   chrome.tabs.executeScript(null, {file: 'scripts/inject.js'});
   chrome.tabs.insertCSS(null, {file: 'scripts/inject.css'});
-  });
 });
 
 /* this is like the controller */

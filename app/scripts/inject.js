@@ -1,4 +1,10 @@
   /*global $:false, ko:false */
+  chrome.storage.local.set({"testMsg": "Testing... 123"});
+  chrome.storage.local.get('testMsg', function(result) {
+    testMsg = result.testMsg;
+    console.log(testMsg);
+    }); 
+
   (function() {
     'use strict';
 
