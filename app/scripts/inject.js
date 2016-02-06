@@ -49,8 +49,53 @@
   ]);
   var selectedSize = ko.observable();
 
+
+  var settingsObj = {}; //for storage
+  var storage = {
+    //helpers
+    get: function() {
+      chrome.storage.local.get(function(result) {
+        if (result) {
+          settingsObj = result;
+          console.log('get() applying bgcolor:' + settingsObj.bgColor);
+          $('body').css('background-color', settingsObj.bgColor);
+        } else {
+          console.log('settingsObj.get() failed...');
+        }
+      });
+    },
+
+    set: function(obj) {
+      console.log('storage.set...');
+      chrome.storage.local.set(obj);
+    },
+    clear: function() {
+      chrome.storage.local.clear();
+    },
+
+    test: function() {
+      var object = {
+        firstKey: '{ testing 123 }'
+      };
+      var object2 = {
+        secondKey: '{ testing 456 }'
+      };
+      storage.clear();
+      storage.set(object);
+      storage.get();
+      storage.set(object2);
+      storage.get();
+    }
+
+
+
+
+
+  };
+
   var displayTemplate = function () {
     var templateUri = chrome.extension.getURL('views/template.html');
+    storage.get();
     return $.ajax({
       url: templateUri,
     })
@@ -94,7 +139,6 @@
 
   var settingsBar = {
 
-
     slideUpDown: function() {
       console.log('slide up down');
       $('#longreader-option-window').slideToggle('slow');
@@ -111,9 +155,11 @@
       var jqCurrentId = '#' + currentId;
       $(jqCurrentId).colorPicker();
       $('body').on('click', function() {
-
         var color = $(jqCurrentId).css('background-color');
         $('body').css('background-color', color);
+
+        settingsObj.bgColor = color;
+        storage.set(settingsObj);
       });
     },
 
@@ -124,38 +170,10 @@
       $('body').on('click', function() {
         var color = $(jqCurrentId).css('background-color');
         $('body').css('color', color);
-      });
-    }
-  };
-  var storage = {
 
-    get: function() {
-      chrome.storage.local.get(function(result) {
-        console.log('storage.get...');
-        console.log(result);
+        settingsObj.fontColor = color;
+        storage.set(settingsObj);
       });
-    },
-    apply: function() {
-    },
-    set: function(obj) {
-      console.log('storage.set...')
-      chrome.storage.local.set(obj);
-    },
-    clear: function() {
-      chrome.storage.local.clear();
-    },
-    test: function() {
-      var object = {
-        firstKey: '{ testing 123 }'
-      };
-      var object2 = {
-        secondKey: '{ testing 456 }'
-      };
-      storage.clear();
-      storage.set(object);
-      storage.get();
-      storage.set(object2);
-      storage.get();
     }
   };
 
@@ -163,6 +181,8 @@
     init:
     function() {
       return $.when(displayTemplate()).done(function() {
+
+
       });
     },
 
@@ -179,9 +199,11 @@
   longreaderVm
   .init()
   .done(function () {
-    console.log('init done');
+    console.log('init done...');
     ko.applyBindings(longreaderVm);
-    storage.test();
+
+
+
   });
 
 })();
