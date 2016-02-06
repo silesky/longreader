@@ -3,27 +3,32 @@
 
 (function() {
   'use strict';
+  var storeFont = function() {
+    $('#longreader-fontselector').on('change', function() {
+      var currentFont = longreaderVm.selectedFont();
+      console.log(currentFont.styleString);
+    });
+  };
 
-  // Observables
+
   var fontList = ko.observableArray([
-    {
-      displayName: 'Select a font...',
-      styleString: null
-    },
-    {
-      displayName: 'Arial',
-      styleString: 'Arial, Helvetica, sans-serif',
-    },
-    {
-      displayName: 'Times New Roman',
-      styleString: 'Times New Roman',
-    },
-    {
-      displayName: 'Courier New',
-      styleString: 'Courier',
-    }
+      {
+        displayName: 'Select a font...',
+        styleString: null
+      },
+      {
+        displayName: 'Arial',
+        styleString: 'Arial, Helvetica, sans-serif',
+      },
+      {
+        displayName: 'Times New Roman',
+        styleString: 'Times New Roman',
+      },
+      {
+        displayName: 'Courier New',
+        styleString: 'Courier',
+      }
   ]);
-  var selectedFont = ko.observable('medium');
   var sizeList = ko.observableArray([
     {
       displayName: 'Select a size...',
@@ -47,9 +52,8 @@
       styleString: 'large',
     }
   ]);
+  var selectedFont = ko.observable();
   var selectedSize = ko.observable();
-
-
   var settingsObj = {}; //for storage
   var storage = {
     //helpers
@@ -58,7 +62,9 @@
         if (result) {
           settingsObj = result;
           console.log('get() applying bgcolor:' + settingsObj.bgColor);
+          console.log('get() applying fontor:' + settingsObj.bgColor);
           $('body').css('background-color', settingsObj.bgColor);
+          $('body').css('color', settingsObj.fontColor);
         } else {
           console.log('settingsObj.get() failed...');
         }
@@ -72,7 +78,6 @@
     clear: function() {
       chrome.storage.local.clear();
     },
-
     test: function() {
       var object = {
         firstKey: '{ testing 123 }'
@@ -87,20 +92,17 @@
       storage.get();
     }
 
-
-
-
-
   };
 
   var displayTemplate = function () {
     var templateUri = chrome.extension.getURL('views/template.html');
-    storage.get();
+
     return $.ajax({
       url: templateUri,
     })
     .done(function (data) {
       $('html').html(data);
+      storage.get();
     });
   };
 
@@ -178,32 +180,24 @@
   };
 
   var longreaderVm = {
-    init:
-    function() {
-      return $.when(displayTemplate()).done(function() {
-
-
-      });
-    },
-
-    sizeList: sizeList,
-    selectedSize: selectedSize,
+    init: function() {
+        return $.when(displayTemplate()).done(function() {
+        });
+      },
     fontList: fontList,
+    sizeList: sizeList,
     selectedFont: selectedFont,
+    selectedSize: selectedSize,
     cogIconUri: chrome.extension.getURL('images/cog.png'),
     backIconUri: chrome.extension.getURL('images/back-white.svg'),
     settingsBar: settingsBar,
     displayContent: displayContent
   };
 
-  longreaderVm
-  .init()
-  .done(function () {
+  longreaderVm.init().done(function() {
     console.log('init done...');
     ko.applyBindings(longreaderVm);
-
-
-
+    storeFont();
   });
 
 })();
