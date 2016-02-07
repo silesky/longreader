@@ -35,6 +35,10 @@
       styleString: null
     },
     {
+      displayName: 'Extra Tiny',
+      styleString: 'xx-small'
+    },
+    {
       displayName: 'Tiny',
       styleString: 'x-small',
     },
@@ -53,8 +57,20 @@
     }
   ]);
   var selectedFont = ko.observable();
-  var selectedSize = ko.observable();
-  var settingsObj = {}; //for storage
+
+
+  ko.extenders.selectedSize = function(target) {
+    target.subscribe(function(obj) {
+      console.log(obj.styleString);
+      var currentColor = obj.styleString;
+      settingsObj.fontSize = currentColor;
+      storage.set(settingsObj);
+
+    });
+    return target;
+  };
+  var selectedSize = ko.observable('large').extend({selectedSize});
+  var settingsObj = {};
   var storage = {
     //helpers
     get: function() {
@@ -62,9 +78,11 @@
         if (result) {
           settingsObj = result;
           console.log('get() applying bgcolor:' + settingsObj.bgColor);
-          console.log('get() applying fontor:' + settingsObj.bgColor);
+          console.log('get() applying fon color:' + settingsObj.fontColor);
+          console.log('get() applying font size:' + settingsObj.fontSize);
           $('body').css('background-color', settingsObj.bgColor);
           $('body').css('color', settingsObj.fontColor);
+          $('body').css('font-size', settingsObj.fontSize);
         } else {
           console.log('settingsObj.get() failed...');
         }
@@ -181,13 +199,14 @@
 
   var longreaderVm = {
     init: function() {
-        return $.when(displayTemplate()).done(function() {
+        return $.when(displayTemplate()).done(function() { //settings init also
         });
       },
     fontList: fontList,
     sizeList: sizeList,
     selectedFont: selectedFont,
     selectedSize: selectedSize,
+
     cogIconUri: chrome.extension.getURL('images/cog.png'),
     backIconUri: chrome.extension.getURL('images/back-white.svg'),
     settingsBar: settingsBar,
@@ -198,6 +217,7 @@
     console.log('init done...');
     ko.applyBindings(longreaderVm);
     storeFont();
+
   });
 
 })();
