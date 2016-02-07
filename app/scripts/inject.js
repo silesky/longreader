@@ -62,8 +62,8 @@
   ko.extenders.selectedSize = function(target) {
     target.subscribe(function(obj) {
       console.log(obj.styleString);
-      var currentColor = obj.styleString;
-      settingsObj.fontSize = currentColor;
+      var currentFontSize = obj.styleString;
+      settingsObj.fontSize = currentFontSize;
       storage.set(settingsObj);
 
     });
