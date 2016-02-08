@@ -8,13 +8,14 @@
   'use strict';
 
   var progressBar = function() {
-    console.log("progress bar!");
-    $('article').on("scroll", function (e) {
-        var horizontal = e.currentTarget.scrollLeft;
-        console.log(horizontal);
-        var vertical = e.currentTarget.scrollTop;
-    });
-  };
+    console.log('progress bar!');
+    $('article').on('scroll', function (e) {
+        var totalPosition = e.target.scrollWidth;
+        var currentPosition = e.target.scrollLeft;
+        var currentPercent = Math.round((currentPosition / totalPosition) * 100);
+        $('#progress').html(currentPercent + '%');
+  });
+};
 
   var settingsObj = {
     // bgColor: '',

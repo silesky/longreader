@@ -52,11 +52,7 @@ nav:hover {
 }
 
 .progress {
-
-  border: 1px dotted grey;
-  width: 10%;
-  height: 20px;
   position: absolute;
-  left:90%;
-  top:0%;
+  left:97%;
+  top:1%;
 }
