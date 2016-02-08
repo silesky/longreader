@@ -50,3 +50,13 @@ nav:hover {
 .longreader-hide {
   display: none;
 }
+
+.progress {
+
+  border: 1px dotted grey;
+  width: 10%;
+  height: 20px;
+  position: absolute;
+  left:90%;
+  top:0%;
+}
