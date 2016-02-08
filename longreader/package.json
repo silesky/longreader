@@ -1,0 +1,12 @@
+{
+  "name": "longreader",
+  "version": "1.0.0",
+  "description": "for reading long articles",
+  "main": "manifest.json",
+  "repository": "git@github.com:silesky/longreader.git",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "seth silesky",
+  "license": "MIT"
+}
