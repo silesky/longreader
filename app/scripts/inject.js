@@ -2,7 +2,20 @@
 
 
 (function() {
+
+
+
   'use strict';
+
+  var progressBar = function() {
+    console.log("progress bar!");
+    $('article').on("scroll", function (e) {
+        var horizontal = e.currentTarget.scrollLeft;
+        console.log(horizontal);
+        var vertical = e.currentTarget.scrollTop;
+    });
+  };
+
   var settingsObj = {
     // bgColor: '',
     // fontColor: '',
@@ -29,7 +42,6 @@
         },
 
       set: function(obj) {
-        console.log('storage.set...');
         chrome.storage.local.set(obj);
       }
 };
@@ -115,6 +127,7 @@
     .done(function (data) {
       $('html').html(data);
       storage.applySettings();
+      progressBar();
     });
   };
 
@@ -193,7 +206,8 @@
 
   var longreaderVm = {
     init: function() {
-        return $.when(displayTemplate()).done(function() { //settings init also
+        return $.when(displayTemplate()).done(function() {
+
         });
       },
     fontList: fontList,
@@ -210,6 +224,7 @@
   longreaderVm.init().done(function() {
     console.log('init done...');
     ko.applyBindings(longreaderVm);
+
 
 
   });
