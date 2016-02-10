@@ -1,1 +1,0 @@
-SETH SILESKY (C)
