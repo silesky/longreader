@@ -125,8 +125,9 @@
     return $.ajax({
       url: templateUri,
     })
-    .done(function (data) {
-      $('html').html(data);
+    .done(function (template) {
+      $('html').html(template);
+      $('#slide').hide().slideDown('medium');
       storage.applySettings();
       progressBar();
     });

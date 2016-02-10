@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <body class="longreader">
+  <div id="slide">
   <nav>
     <button data-bind="click: settingsBar.reloadPage">
       <img style="height:1.5em;width:1.5em"
@@ -24,8 +25,6 @@
       optionsText: 'displayName',
       value: selectedSize"></select>
 
-
-
     </div>
   </nav>
   <article class="longreader-three-col"
@@ -37,5 +36,7 @@
     <h2 data-bind="text: displayContent.articleAuthor"></h2>
     <div data-bind="html: displayContent.articleContent"></div>
   </article>
+</div>
 </body>
+
 </html>
