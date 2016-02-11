@@ -29,7 +29,8 @@
           chrome.storage.local.get(function(result) {
             if (result) {
               settingsObj = result;
-              console.log('storage.applySettings(): ' + settingsObj.fontFamily);
+              console.log('storage.applySettings(): ');
+              console.log(result);
               $('body').css('background-color', settingsObj.bgColor);
               $('body').css('color', settingsObj.fontColor);
               $('body').css('font-family', settingsObj.fontFamily);
