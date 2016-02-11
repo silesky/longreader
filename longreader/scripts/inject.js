@@ -50,7 +50,7 @@
   var fontList = ko.observableArray([
       {
         displayName: 'Select a font...',
-        styleString: null
+        styleString: settingsObj.styleString,
       },
       {
         displayName: 'Arial',
@@ -81,7 +81,7 @@
   var sizeList = ko.observableArray([
     {
       displayName: 'Select a size...',
-      styleString: null
+      styleString: settingsObj.styleString,
     },
     {
       displayName: 'Very Tiny',
