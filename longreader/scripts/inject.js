@@ -35,7 +35,9 @@
               $('body').css('color', settingsObj.fontColor);
               $('body').css('font-family', settingsObj.fontFamily);
               $('body').css('font-size', settingsObj.fontSize);
-
+              var node = document.getElementById('longreader-fontselector');
+              var child = node.firstChild;
+              $(child).html(settingsObj.fontFamily);
             } else {
               console.log('settingsObj.get() failed...');
             }
