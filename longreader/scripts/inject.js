@@ -11,7 +11,7 @@
     console.log('progress bar!');
     $('article').on('scroll', function (e) {
         var totalPosition = e.target.scrollWidth;
-        var currentPosition = e.target.scrollLeft;
+        var currentPosition = e.target.scrollLeft + 1000;
         var currentPercent = Math.round((currentPosition / totalPosition) * 100);
         $('#progress').html(currentPercent + '%');
   });
@@ -70,7 +70,7 @@
         styleString: 'Lucida Sans Unicode',
       },
       {
-        displayName: 'Times New Roman (serif)',
+        displayName: 'Times New Roman',
         styleString: 'Times New Roman',
       },
       {
@@ -84,7 +84,7 @@
       styleString: null
     },
     {
-      displayName: 'Extra Tiny',
+      displayName: 'Very Tiny',
       styleString: 'xx-small'
     },
     {
