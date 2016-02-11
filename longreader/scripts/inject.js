@@ -57,12 +57,25 @@
         styleString: 'Arial, Helvetica, sans-serif',
       },
       {
-        displayName: 'Times New Roman',
+        displayName: 'Courier New',
+        styleString: 'Courier New',
+      },
+      {
+        displayName: 'Georgia',
+        styleString: 'Georgia',
+      },
+
+      {
+        displayName: 'Lucida',
+        styleString: 'Lucida Sans Unicode',
+      },
+      {
+        displayName: 'Times New Roman (serif)',
         styleString: 'Times New Roman',
       },
       {
-        displayName: 'Courier New',
-        styleString: 'Courier',
+        displayName: 'Verdana',
+        styleString: 'Verdana'
       }
   ]);
   var sizeList = ko.observableArray([
