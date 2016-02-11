@@ -1,6 +1,6 @@
 {
   "name": "Longreader",
-  "version" : "1.2",
+  "version" : "1.3",
   "manifest_version": 2,
   "description": "Fit more content on your screen. Display an article in columns across the whole monitor. Customize size, colors and text.",
   "icons": {
