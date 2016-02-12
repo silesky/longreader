@@ -12,6 +12,9 @@
 
     var getCurrentPercent = function(currentPosition, totalPosition) {
           var currentPercent = Math.round((currentPosition / totalPosition) * 100);
+          if (currentPercent > 100) {
+            currentPercent = 100;
+          }
           return currentPercent + '%';
     };
     $('article').on('scroll', function (e) {
