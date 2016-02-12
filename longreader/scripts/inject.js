@@ -35,15 +35,9 @@
               $('body').css('color', settingsObj.fontColor);
               $('body').css('font-family', settingsObj.fontFamily);
               $('body').css('font-size', settingsObj.fontSize);
-              var num;
-              fontList().forEach(function(el, i) {
-                  if(el.displayName === settingsObj.fontFamilyDisplayName) {
-                      console.log('MATCH...' + "index:" + i);
-                      num = i;
-                  }
-              });
-             
-              $("select[id='longreader-fontselector'] option:eq(" + num + ")").attr("selected", "selected");
+              var node = document.getElementById('longreader-fontselector');
+              var child = node.firstChild;
+              $(child).html(settingsObj.fontFamily);
             } else {
               console.log('settingsObj.get() failed...');
             }
@@ -89,7 +83,7 @@
   ]);
   var sizeList = ko.observableArray([
     {
-      displayName: 'Select a font size...',
+      displayName: 'Select a size...',
       styleString: settingsObj.styleString,
     },
     {
@@ -117,13 +111,11 @@
 
   ko.extenders.selectedFont = function(target) {
     target.subscribe(function(obj) {
-      console.log('selectedFont...');
         console.log(obj.styleString);
-        var currentFontFamilyDisplayName = obj.displayName;
-        settingsObj.fontFamilyDisplayName = currentFontFamilyDisplayName;
         var currentFontFamily = obj.styleString;
         settingsObj.fontFamily = currentFontFamily;
         storage.set(settingsObj);
+
       });
       return target;
     };
@@ -132,10 +124,7 @@
 
   ko.extenders.selectedSize = function(target) {
     target.subscribe(function(obj) {
-      console.log('selectedSize...');
       console.log(obj.styleString);
-      var currentFontSizeDisplayName = obj.displayName;
-      settingsObj.fontSizeDisplayName = currentFontSizeDisplayName;
       var currentFontSize = obj.styleString;
       settingsObj.fontSize = currentFontSize;
       storage.set(settingsObj);
