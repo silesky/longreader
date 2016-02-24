@@ -189,10 +189,25 @@
   })();
 
   var settingsBar = {
+    bindSettings: function() {
+      var toggleSlider = function() {
+        console.log('slide up down');
+        $('#longreader-option-window').slideToggle('slow');
+      };
+      var bindColorPicker = function() {
+        $('#longreader-colorpicker-bgcolor').on('click', function() {
+          $('#longreader-colorpicker-bgcolor').colorPicker();
+          console.log('longreadercolorpicker click');
+        });
+      };
+
+        toggleSlider();
+        bindColorPicker();
+    },
+
 
     slideUpDown: function() {
-      console.log('slide up down');
-      $('#longreader-option-window').slideToggle('slow');
+    $('#longreader-option-window').slideToggle('slow');
     },
     slideUp: function() {
       $('#longreader-option-window').slideUp('slow');
@@ -200,17 +215,24 @@
     reloadPage: function() {
       location.reload();
     },
-    bgColorWidget: function(data, event) {
+    bgColorWidget: function() {
       console.log('bgColorWidget function click');
-      var currentId = event.target.id;
-      var jqCurrentId = '#' + currentId;
-      $(jqCurrentId).colorPicker();
-      $('body').on('click', function() {
-        var color = $(jqCurrentId).css('background-color');
-        $('body').css('background-color', color);
+      // var currentId = event.target.id;
+      // var jqCurrentId = '#' + currentId;
 
-        settingsObj.bgColor = color;
-        storage.set(settingsObj);
+      $("#longreader-colorpicker-bgcolor").on('click', function() {
+        console.log('longreadercolorpicker click');
+        $(this).colorPicker();
+      });
+      $('body').on('click', function() {
+        console.log('nice');
+        var color = "red"
+
+      // / var color = $(jqCurrentId).css('background-color');
+      //   $('body').css('background-color', color);
+      //
+      //   settingsObj.bgColor = color;
+      //   storage.set(settingsObj);
       });
     },
 
