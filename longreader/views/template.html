@@ -1,41 +1,37 @@
 <!doctype html>
 <html>
 <body class="longreader">
-  <div id="slide">
-  <nav>
-    <button data-bind="click: settingsBar.reloadPage">
-      <img style="height:1.5em;width:1.5em"
-      data-bind="attr: {src: backIconUri}"/>
-    </button>
-    <button data-bind="click: settingsBar.bindSettings">
-      <img style="height:1.5em;width:1.5em"
-       data-bind="attr: {src: cogIconUri}"/>
-    </button>
-    <div id="progress" class="progress">0%</div>
+    <div id="slide">
+        <nav>
+            <button data-bind="click: settingsBar.reloadPage">
+                <img style="height:1.5em;width:1.5em"
+                data-bind="attr: {src: backIconUri}"/>
+            </button>
+            <button data-bind="click:function() { settingsBar.bindColorPickers(); settingsBar.slideToggle() }">
+            <img data-bind="attr: {src: cogIconUri}"
+            style="height:1.5em;width:1.5em" />
+        </button>
+        <div id="progress" class="progress">0%</div>
 
-    <div id="longreader-option-window" class="longreader-option">
-      <input id="longreader-colorpicker-bgcolor" placeholder="Background" size="13" class="color">
-      <input data-bind="click: settingsBar.fontColorWidget" id="longreader-colorpicker-fontcolor" placeholder="Font Color" size="13" class="color">
+        <div id="longreader-option-window" class="longreader-option">
+            <input id="longreader-colorpicker-bgcolor" placeholder="Background" size="13" class="color">
+            <input id="longreader-colorpicker-fontcolor" placeholder="Font Color" size="13" class="color">
 
-      <select id="longreader-fontselector" data-bind="options: fontList,
-       optionsText: 'displayName',
-       value: selectedFont"></select>
+            <select id="longreader-fontselector" data-bind="options: fontList,
+            optionsText: 'displayName',
+            value: selectedFont"></select>
 
-      <select id="longreader-option-size"  data-bind="options: sizeList,
-      optionsText: 'displayName',
-      value: selectedSize"></select>
+            <select id="longreader-option-size"  data-bind="options: sizeList,
+            optionsText: 'displayName',
+            value: selectedSize"></select>
 
-    </div>
-  </nav>
-  <article class="longreader-three-col"
-  data-bind="style: {fontFamily: selectedFont().styleString,
-    fontSize: selectedSize().styleString},
-    click: settingsBar.slideUp"
-  >
-    <h1 data-bind="text: displayContent.articleTitle"></h1>
-    <h2 data-bind="text: displayContent.articleAuthor"></h2>
-    <div data-bind="html: displayContent.articleContent"></div>
-  </article>
+        </div>
+    </nav>
+    <article class="longreader-three-col" data-bind="style: {fontFamily: selectedFont().styleString, fontSize: selectedSize().styleString}">
+        <h1 data-bind="text: displayContent.articleTitle"></h1>
+        <h2 data-bind="text: displayContent.articleAuthor"></h2>
+        <div data-bind="html: displayContent.articleContent"></div>
+    </article>
 </div>
 </body>
 
