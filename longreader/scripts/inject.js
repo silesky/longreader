@@ -2,14 +2,9 @@
 
 
 (function() {
-
-
-
     'use strict';
 
     var progressBar = function() {
-        console.log('progress bar!');
-
         var getCurrentPercent = function(currentPosition, totalPosition) {
             var currentPercent = Math.round((currentPosition / totalPosition) * 100);
             if (currentPercent > 100) {
@@ -20,7 +15,6 @@
         $('article').on('scroll', function (e) {
             var totalPosition = e.target.scrollWidth;
             var currentPosition = e.target.scrollLeft + 1000;
-
             $('#progress').html(getCurrentPercent(currentPosition, totalPosition));
         });
     };
