@@ -6,14 +6,18 @@ var executeScript = function() {
   chrome.tabs.executeScript(null, {file: 'scripts/plugins/jqColorPicker.min.js'});
 };
 
-var createContextMenu = function() {
+var _createContextMenu = function() {
   chrome.contextMenus.create({title: 'Longreader', id: 'parent', onclick: executeScript() });
 };
 
 chrome.runtime.onInstalled.addListener(function() {
-  createContextMenu();
+  _createContextMenu();
 });
 
-chrome.contextMenus.onClicked.addListener(function(info, tab) {
-  executeScript()
+chrome.contextMenus.onClicked.addListener(function(tab) {
+  executeScript(tab);
+});
+
+chrome.browserAction.onClicked.addListener(function(tab) {
+  executeScript(tab);
 });

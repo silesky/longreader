@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "description": "Fit more content on your screen. Display an article in columns across the whole monitor. Customize size, colors and text.",
   "icons": {
-    "16": "images/icons/book_green_16.png",
+    "16": "images/icons/book_16.png",
     "48": "images/icons/book_green_48.png",
     "128": "images/icons/book_green_128.png"
   },
