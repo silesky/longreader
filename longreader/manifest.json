@@ -15,6 +15,7 @@
     "persistent": false
 },
   "permissions": [
+    "contextMenus",
     "storage",
     "activeTab",
     "https://readability.com/*"
